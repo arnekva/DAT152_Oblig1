@@ -1,4 +1,4 @@
-## DAT152
-# Oblig 1
+# DAT152
+## Oblig 1
 
-# Gruppemedlemmer: x
+### Gruppemedlemmer: x

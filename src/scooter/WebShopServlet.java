@@ -39,7 +39,6 @@ public class WebShopServlet extends HttpServlet {
 			sesjon = request.getSession(false);
 		}
 		
-		productEAO.createAllProducts();
 		ArrayList<Product> products = productEAO.getProducts();
 		
 		request.getSession().setAttribute("products", products);
@@ -58,9 +57,10 @@ public class WebShopServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		@SuppressWarnings("unchecked")
-		ArrayList<Product> products = (ArrayList<Product>) request.getSession().getAttribute("products");
-		Product cartItem = 
+		
+		ArrayList<Product> products = productEAO.getProducts();
+		Product cartItem = productEAO.getProduct(Integer.parseInt(request.getParameter("prodnr")));
+		
 		
 	}
 

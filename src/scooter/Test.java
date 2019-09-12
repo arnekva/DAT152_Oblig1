@@ -13,7 +13,7 @@ public class Test {
 		Cart cart = new Cart();
 		System.out.println("Current Locale: " + Locale.getDefault());
 		ResourceBundle storeBundle = ResourceBundle.getBundle("store");
-		ArrayList<Product> products = productEAO.createAllProducts();
+		ArrayList<Product> products = productEAO.getProducts();
 		Scanner tast = new Scanner(System.in);
 		System.out.println(storeBundle.getString("welcome_message"));
 		boolean finished = false;

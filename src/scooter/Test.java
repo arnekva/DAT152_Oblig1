@@ -1,6 +1,7 @@
 package scooter;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Test {
@@ -9,7 +10,11 @@ public class Test {
 
 		ProductEAO productEAO = new ProductEAO();
 		Cart cart = new Cart();
-
+		
+		Locale en_US = Locale.US;
+		Locale nb_NO = new Locale("nb");
+		Locale ge_GE = Locale.GERMAN;
+		
 		ArrayList<Product> products = productEAO.createAllProducts();
 
 		Scanner tast = new Scanner(System.in);
@@ -17,6 +22,14 @@ public class Test {
 				+ "\ncart: Se carten din";
 
 		System.out.println("Velkommen til The Big Cup Store! Skriv 'help' for en liste over kommandoer:");
+		
+		String added ="";
+		String error ="";
+		String itemsincart = "";
+		
+		
+		Locale currentLocale = nb_NO;
+		
 		boolean finished = false;
 		while (!finished) {
 

@@ -35,7 +35,6 @@
 
 <div class="container">
 <div class="list-container">
-<fmt:message key="welcome_message" />
 <c:forEach var="product" items="${products}"  varStatus="loop">
 <table class="prod">
   <tr>

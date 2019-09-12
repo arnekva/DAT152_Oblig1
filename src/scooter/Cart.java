@@ -22,8 +22,8 @@ public class Cart {
 //			}
 //		}
 	}
-	public void removeSetItems(Product item, int x){
-		
+	public void remove(Product item){
+		items.remove(item);
 	}
 
 	public void removeAll() {

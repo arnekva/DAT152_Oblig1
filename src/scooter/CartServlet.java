@@ -25,8 +25,13 @@ public class CartServlet extends HttpServlet {
 //			response.sendRedirect("webshop");
 //		}
 			
-		@SuppressWarnings("unchecked")
-		ArrayList<Product> cart = (ArrayList<Product>) request.getSession().getAttribute("cart");
+		Cart cart = new Cart();
+		Product prod1 = productEAO.getProducts().get(1);
+		Product prod2 = productEAO.getProducts().get(2);
+		cart.addItem(prod1);
+		cart.addItem(prod2);
+		request.getSession().setAttribute("cart", cart);
+		
 		
 		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
 			request.getSession().setAttribute("language", "nb_NO");
@@ -42,10 +47,14 @@ public class CartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String removeThis = request.getParameter("prodnr");
-		@SuppressWarnings("unchecked")
-		ArrayList<Product> cart = (ArrayList<Product>) request.getSession().getAttribute("cart");
+		
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		for(int i = 0;i<cart.getItems().size();i++) {
+			System.out.println(cart.getItems().get(i).toString());
+		}
 		if(productEAO.findProduct(removeThis) != null) {
 		cart.remove(productEAO.findProduct(removeThis));
+		request.getSession().setAttribute("cart", cart);
 		} else {
 			response.sendRedirect("cart");
 		}

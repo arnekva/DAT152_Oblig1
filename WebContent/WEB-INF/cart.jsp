@@ -35,7 +35,7 @@
 
 <div class="container">
 <div class="list-container">
-<c:forEach var="product" items="${cart}"  varStatus="loop">
+<c:forEach var="product" items="${cart.items}"  varStatus="loop">
 <table class="prod">
   <tr>
     <th><fmt:message key="product_nr_txt" /></th>
@@ -51,8 +51,7 @@
   </tr>
   <tr><td ><form id="form2">
 <input type="hidden" name="prodnr" value="${product.prodnr}">
-<button  onclick="submit()" ><fmt:message key="button_remove" />
-<fmt:message key="button_remove" /></button></form></td></tr>
+<button  onclick="submit()" ><fmt:message key="button_remove" /></button></form></td></tr>
 </table>
     
 </c:forEach>

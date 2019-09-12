@@ -21,5 +21,10 @@ public class Cart {
 	public void removeItem(Product product) {
 		CartItems.remove(product);
 	}
+	public void printAllItems() {
+		for (Product p : CartItems) {
+			System.out.println(p);
+		}
+	}
 	
 }

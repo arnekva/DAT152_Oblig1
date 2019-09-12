@@ -24,13 +24,6 @@ public class CartServlet extends HttpServlet {
 //		if (request.getSession() == null) {
 //			response.sendRedirect("webshop");
 //		}
-			
-		Cart cart = new Cart();
-		Product prod1 = productEAO.getProducts().get(1);
-		Product prod2 = productEAO.getProducts().get(2);
-		cart.addItem(prod1);
-		cart.addItem(prod2);
-		request.getSession().setAttribute("cart", cart);
 		
 		
 		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
@@ -49,11 +42,11 @@ public class CartServlet extends HttpServlet {
 		String removeThis = request.getParameter("prodnr");
 		
 		Cart cart = (Cart) request.getSession().getAttribute("cart");
-		for(int i = 0;i<cart.getItems().size();i++) {
-			System.out.println(cart.getItems().get(i).toString());
-		}
+
 		if(productEAO.findProduct(removeThis) != null) {
-		cart.remove(productEAO.findProduct(removeThis));
+			System.out.println("whaaat");
+		cart.removeItem(productEAO.findProduct(removeThis));
+		
 		request.getSession().setAttribute("cart", cart);
 		} else {
 			response.sendRedirect("cart");

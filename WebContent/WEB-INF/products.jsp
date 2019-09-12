@@ -24,9 +24,9 @@
         <form>
             <select name="language" onchange="submit()">
             <option value="" selected disabled hidden>Choose language</option>
-                <option value="en_US" ${language == 'en' ? 'selected' : ''}>EN</option>
-                <option value="de_DE" ${language == 'ru' ? 'selected' : ''}>DE</option>
-                <option value="nb_NO" ${language == 'nb' ? 'selected' : ''}>NB</option>
+                <option value="en_US" ${language == 'en' ? 'selected' : ''}>English (US)</option>
+                <option value="de_DE" ${language == 'ru' ? 'selected' : ''}>Deutsch (DE)</option>
+                <option value="nb_NO" ${language == 'nb' ? 'selected' : ''}>Norsk (Bokmål)</option>
             </select>
         </form>
     </span>

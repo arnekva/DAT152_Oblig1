@@ -44,7 +44,7 @@ public class WebShopServlet extends HttpServlet {
 		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
 			request.getSession().setAttribute("language", "nb_NO");
 		} else {
-			System.out.println("Already there");
+			System.out.println("Locale has been set by user");
 		}
 		
 

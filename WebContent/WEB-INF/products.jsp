@@ -36,7 +36,7 @@
 <div class="container">
 <div class="list-container">
 <fmt:message key="welcome_message" />
-<c:forEach var="product" items="${cart}"  varStatus="loop">
+<c:forEach var="product" items="${products}"  varStatus="loop">
 <table class="prod">
   <tr>
     <th><fmt:message key="product_nr_txt" /></th>

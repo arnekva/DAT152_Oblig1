@@ -42,18 +42,23 @@ public class Test {
 			} catch(Exception e) {
 				System.out.println("fuck you");
 			}
+			break;
 		case "cart":
 			System.out.println("Du har følgende varer i handlekurven: ");
 			for(int i = 0; i<cart.getItems().size(); i++) {
 				System.out.println(cart.getItems().get(i));
 			}
+			break;
 		case "help":
 			System.out.println(help);
+			break;
 		case "done":
 			finished = true;
+			break;
 		default:
 			System.out.println("Denne kommandoen gjenkjente vi ikke. Prøv på ny. Skriv 'help' for listen igjen.");
 		}
+		break;
 		
 		
 		}

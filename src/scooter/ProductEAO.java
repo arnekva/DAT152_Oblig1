@@ -6,10 +6,10 @@ import java.util.List;
 public class ProductEAO {
 
 	
-	
+	ArrayList<Product> products = new ArrayList<Product>();
 	public ArrayList<Product> createAllProducts() {
 
-		ArrayList<Product> products = new ArrayList<Product>();
+		
 		
 		Product kopp1 = new Product(1, "HaraldCup", 9, "img/kopp1.png");
 		Product kopp2 = new Product(2, "The Golden Mug", 29, "img/kopp2.png");
@@ -26,6 +26,12 @@ public class ProductEAO {
 		products.add(kopp6);
 		
 		return products;
+	}
+	public ArrayList<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(ArrayList<Product> products) {
+		this.products = products;
 	}
 	
 }

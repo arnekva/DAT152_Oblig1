@@ -13,11 +13,11 @@ public class Test {
 		ArrayList<Product> products = productEAO.createAllProducts();
 
 		Scanner tast = new Scanner(System.in);
+		String help = "call: See alle varer \nadd:Skriv add, trykk enter, så følg opp med varenummeret og trykk enter."
+				+ "\ncart: Se carten din";
 		
 		System.out.println("Velkommen til The Big Cup Store! Her er en liste over kommandoer:");
-		System.out.println(
-				"call: See alle varer \nadd:Skriv add, trykk enter, så følg opp med varenummeret og trykk enter."
-						+ "\ncart: Se carten din");
+		System.out.println(help);
 		boolean finished = false;
 		while(!finished) {
 			
@@ -29,12 +29,21 @@ public class Test {
 				System.out.println(products.get(i).toString());
 			}
 		case "add":
-			
+			try {
+			int nr = tast.nextInt();tast.nextLine();
+			Product nyprod = products
+			cart.addItem(item);
+			} catch(Exception e) {
+				System.out.println("fuck you");
+			}
 		case "cart":
 			
+		case "help":
+			System.out.println(help);
 		case "done":
-			
+			finished = true;
 		default:
+			System.out.println("Denne kommandoen gjenkjente vi ikke. Prøv på ny. Skriv 'help' for listen igjen.");
 		}
 		
 		

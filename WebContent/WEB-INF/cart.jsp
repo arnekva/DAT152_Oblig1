@@ -6,7 +6,7 @@
 <fmt:setBundle basename="store" />
 <!doctype html>
 
-<html lang="no">
+<html lang="${language}">
 <head>
   <meta charset="utf-8">
 
@@ -30,12 +30,11 @@
         </form>
     </span>
 </div>
-<nav><a href="index.html"><fmt:message key="link_home" /></a><a href="cart.html"><fmt:message key="link_cart" /></a></nav>
+<nav><a href="index.jsp"><fmt:message key="link_home" /></a><a href="cart.jsp"><fmt:message key="link_cart" /></a><a href="products.jsp"><fmt:message key="link_products" /></a></nav>
 <p><fmt:message key="welcome_message" /></p>
 
 <div class="container">
 <div class="list-container">
-<fmt:message key="welcome_message" />
 <c:forEach var="product" items="${cart}"  varStatus="loop">
 <table class="prod">
   <tr>
@@ -50,7 +49,10 @@
     <th><fmt:message key="product_price_txt" /></th>
     <td>${product.pris}</td>
   </tr>
-  <tr><td ><button class="btn-cart"value="Handlekurv"><fmt:message key="button_add" /></button></td></tr>
+  <tr><td ><form id="form2">
+<input type="hidden" name="prodnr" value="${product.prodnr}">
+<button  onclick="submit()" ><fmt:message key="button_remove" />
+<fmt:message key="button_remove" /></button></form></td></tr>
 </table>
     
 </c:forEach>

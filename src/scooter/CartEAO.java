@@ -1,17 +1,21 @@
 package scooter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
 
 public class CartEAO {
 	
-	List<Product> CartItems = null;
+	ArrayList<Product> CartItems = new ArrayList<Product>();
 	
-	public List<Product> getAllCartItems() {
-
-		List<Product> items = null;
-		return items;
+	public ArrayList<Product> getAllCartItems() {
+		return CartItems;
+	}
+	public void addItem(Product product) {
+		CartItems.add(product);
+	}
+	public void removeItem(Product product) {
+		CartItems.remove(product);
 	}
 	
 }

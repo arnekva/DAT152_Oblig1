@@ -1,10 +1,16 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="store" />
 <!doctype html>
 
 <html lang="no">
 <head>
   <meta charset="utf-8">
 
-  <title>Hjem</title>
+  <title><fmt:message key="page_title" /></title>
 
   <link rel="stylesheet" href="css/scooter.css">
 <style>
@@ -15,57 +21,34 @@
 <body>
 <div class="locale"><a class="locale_link" href="#">Norsk</a>
   <a class="locale_link" href="#">English (US)</a>
-  <a class="locale_link" href="#">Español</a>
+  <a class="locale_link" href="#">EspaÃ±ol</a>
 </div>
-<nav><a href="index.html">HJEM</a><a href="cart.html">CART</a></nav>
+<nav><a href="index.html"><fmt:message key="link_home" /></a><a href="cart.html"><fmt:message key="link_cart" /></a></nav>
+<p><fmt:message key="welcome_message" /></p>
+
 <div class="container">
 <div class="list-container">
+<c:forEach var="product" items="${products}"  varStatus="loop">
 <table class="prod">
-<img class="prod-img"src="img/sco2.jpg" alt="" border=0 height=100 width=100></img>
   <tr>
-    <th>Merke: </th>
-    <td>Bydue</td>
+    <th><fmt:message key="product_nr_txt" /></th>
+    <td>${product.prodnr}</td>
   </tr>
   <tr>
-    <th>Modell: </th>
-    <td>Pro Duo 2000</td>
+    <th><fmt:message key="product_name_txt" /></th>
+    <td>${product.navn}</td>
   </tr>
   <tr>
-    <th>Rekkevidde: </th>
-    <td>25-30 km</td>
+    <th><fmt:message key="product_price_txt" /></th>
+    <td>${product.pris}</td>
   </tr>
-  <tr>
-    <th>Pris: </th>
-    <td>4999 kr</td>
-  </tr>
-  <tr><td ><button class="btn-cart"value="Handlekurv">Legg til</button></td></tr>
+  <tr><td ><button class="btn-cart"value="Handlekurv"><fmt:message key="button_add" /></button></td></tr>
 </table>
+    
+</c:forEach>
 
 </div>
-<div class="list-container">
-<table class="prod">
-<img class="prod-img"src="img/sco1.jpeg" alt="" border=0 height=100 width=100></img>
-  <tr>
-    <th>Merke: </th>
-    <td>HaraldWalk</td>
-  </tr>
-  <tr>
-    <th>Modell: </th>
-    <td>Max XR 500</td>
-  </tr>
-  <tr>
-    <th>Rekkevidde: </th>
-    <td>10 - 15 km</td>
-  </tr>
-  <tr>
-    <th>Pris: </th>
-    <td>7499 kr</td>
-  </tr>
-  <tr><td ><button class="btn-cart"value="Handlekurv">Legg til</button></td></tr>
-</table>
 
 </div>
-</div>
-<footer>(c) xxx HvL</footer>
 </body>
 </html>

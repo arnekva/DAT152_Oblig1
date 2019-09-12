@@ -2,11 +2,14 @@ package scooter;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class WebShopServlet
@@ -27,7 +30,18 @@ public class WebShopServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession sesjon = null;
+		if (request.getSession(false) == null) {
+			sesjon = request.getSession(true);
+		} else {
+			sesjon = request.getSession(false);
+		}
+		ProductEAO productEAO = new ProductEAO();
+		productEAO.createAllProducts();
+		ArrayList<Product> products = productEAO.getProducts();
+		
+		request.getSession().setAttribute("products", products);
+
 		request.getRequestDispatcher("WEB-INF/products.jsp").forward(request, response);
 	}
 

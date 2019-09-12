@@ -18,6 +18,7 @@ public class Product{
 		this.pris = pris;
 		this.bilde = bilde;
 	}
+	
 	public int getProdnr() {
 		return prodnr;
 	}
@@ -45,7 +46,10 @@ public class Product{
     
     
     
-
+	@Override
+	public String toString() {
+		return "Product [prodnr=" + prodnr + ", navn=" + navn + ", pris=" + pris + ", bilde=" + bilde + "]";
+	}
 
     
 

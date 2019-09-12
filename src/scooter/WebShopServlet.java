@@ -17,12 +17,14 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/products")
 public class WebShopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ProductEAO productEAO = new ProductEAO();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public WebShopServlet() {
         super();
+        
         // TODO Auto-generated constructor stub
     }
 
@@ -36,7 +38,7 @@ public class WebShopServlet extends HttpServlet {
 		} else {
 			sesjon = request.getSession(false);
 		}
-		ProductEAO productEAO = new ProductEAO();
+		
 		productEAO.createAllProducts();
 		ArrayList<Product> products = productEAO.getProducts();
 		
@@ -55,8 +57,11 @@ public class WebShopServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Product> products = (ArrayList<Product>) request.getSession().getAttribute("products");
+		Product cartItem = 
+		
 	}
 
 }

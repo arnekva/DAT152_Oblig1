@@ -34,4 +34,15 @@ public class ProductEAO {
 		this.products = products;
 	}
 	
+	public Product getProduct(int prodnr) {
+		Product p = null;
+		for (int i = 0; i < products.size(); i++) {
+			if (products.get(i).getProdnr() == prodnr) {
+				p = products.get(i);
+				i = products.size();
+			}
+		}
+		return p;
+	}
+	
 }

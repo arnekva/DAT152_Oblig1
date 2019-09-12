@@ -50,7 +50,12 @@
     <th><fmt:message key="product_price_txt" /></th>
     <td>${product.pris}</td>
   </tr>
-  <tr><td ><button class="btn-cart"value="Handlekurv"><fmt:message key="button_add" /></button></td></tr>
+  <tr><td >
+  <form>
+	<input type="hidden" name="prodnr" value="${product.prodnr}">
+	<button onclick="submit()" ><fmt:message key="button_add" /></button>
+  </form>
+  </td></tr>
 </table>
     
 </c:forEach>

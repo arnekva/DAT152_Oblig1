@@ -11,23 +11,11 @@ public class Test {
 
 		ProductEAO productEAO = new ProductEAO();
 		Cart cart = new Cart();
-		
 		System.out.println("Current Locale: " + Locale.getDefault());
 		ResourceBundle storeBundle = ResourceBundle.getBundle("store");
-		
-		
 		ArrayList<Product> products = productEAO.createAllProducts();
-
 		Scanner tast = new Scanner(System.in);
-
-
 		System.out.println(storeBundle.getString("welcome_message"));
-		
-		
-		
-		Locale currentLocale = Locale.getDefault();
-		
-		
 		boolean finished = false;
 		while (!finished) {
 			
@@ -54,7 +42,7 @@ public class Test {
 					}
 
 				} catch (Exception e) {
-					System.out.println("fuck you");
+					System.out.println("fuck you");tast.nextLine();
 				}
 				break;
 			case "cart":
@@ -92,6 +80,7 @@ public class Test {
 			}
 
 		}
+		tast.close();
 
 	}
 

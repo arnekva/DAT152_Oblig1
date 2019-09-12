@@ -1,4 +1,4 @@
-package no.hvl.dat152;
+package scooter;
 
 
 import java.io.IOException;

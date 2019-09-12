@@ -1,4 +1,4 @@
-package no.hvl.dat152;
+package scooter;
 
 import java.util.ArrayList;
 import java.util.List;

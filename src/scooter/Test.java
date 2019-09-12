@@ -32,7 +32,7 @@ public class Test {
 		while (!finished) {
 			
 			
-			System.out.println("\nNy input:");
+			System.out.println(storeBundle.getString("new_input_message"));
 			
 			String input = tast.nextLine();
 
@@ -49,7 +49,7 @@ public class Test {
 					for (int j = 0; j < products.size(); j++) {
 						if (products.get(j).getProdnr() == nr) {
 							cart.addItem(products.get(j));
-							System.out.println("Vare lagt til");
+							System.out.println(storeBundle.getString("vare_added_message"));
 						}
 					}
 
@@ -58,7 +58,7 @@ public class Test {
 				}
 				break;
 			case "cart":
-				System.out.println("Du har følgende varer i handlekurven: ");
+				System.out.println(storeBundle.getString("varer_i_kurv_message"));
 				for (int i = 0; i < cart.getItems().size(); i++) {
 					System.out.println(cart.getItems().get(i));
 				}
@@ -68,18 +68,26 @@ public class Test {
 				break;
 			case "done":
 				finished = true;
-				System.out.println("Takk for besøket, velkommen igjen :-)");
+				System.out.println(storeBundle.getString("welcome_back_message"));
 				break;
 			case "german":
+				System.out.println("Wechselt zu Deutsch");
 				Locale.setDefault(new Locale("de", "DE"));
 				storeBundle = ResourceBundle.getBundle("store");
 				break;
+				
+			case "english":
+				System.out.println("Changing to English");
+				Locale.setDefault(new Locale("en", "US"));
+				storeBundle = ResourceBundle.getBundle("store");
+				break;
 			case "norsk":
+				System.out.println("Bytter til norsk");
 				Locale.setDefault(new Locale("nb", "NO"));
 				storeBundle = ResourceBundle.getBundle("store");
 				break;
 			default:
-				System.out.println("Denne kommandoen gjenkjente vi ikke. Prøv på ny. Skriv 'help' for listen igjen.");
+				System.out.println(storeBundle.getString("uknown_command_message"));
 				break;
 			}
 

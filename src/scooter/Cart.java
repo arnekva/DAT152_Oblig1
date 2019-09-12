@@ -12,7 +12,7 @@ public class Cart {
 		this.CartItems = new ArrayList<Product>();
 	}
 	
-	public ArrayList<Product> getAllCartItems() {
+	public ArrayList<Product> getItems() {
 		return CartItems;
 	}
 	public void addItem(Product product) {

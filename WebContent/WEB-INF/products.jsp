@@ -50,8 +50,8 @@
     <td>${product.pris}</td>
   </tr>
   <tr><td >
-  <form>
-	<input type="hidden" name="prodnr" value="${product.prodnr}">
+  <form method="post">
+	<input type="hidden" name="prodnr" value="${product.prodnr}"/>
 	<button onclick="submit()" ><fmt:message key="button_add" /></button>
   </form>
   </td></tr>

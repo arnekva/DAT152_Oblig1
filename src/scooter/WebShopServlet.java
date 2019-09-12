@@ -39,6 +39,14 @@ public class WebShopServlet extends HttpServlet {
 			sesjon = request.getSession(false);
 		}
 		
+		@SuppressWarnings("unused")
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		
+		try {
+			System.out.println(cart.getItems().get(0));
+		} catch (Exception e) {
+			System.out.println("Hmm.. ser ikke ut som det er noe i handlevognen enda.");
+		}
 		ArrayList<Product> products = productEAO.getProducts();
 		
 		request.getSession().setAttribute("products", products);
@@ -57,10 +65,17 @@ public class WebShopServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		ArrayList<Product> products = productEAO.getProducts();
-		Product cartItem = productEAO.getProduct(Integer.parseInt(request.getParameter("prodnr")));
-		
+		Cart cart = new Cart();
+		Product cartItem;
+		try {
+			cartItem = productEAO.getProduct(Integer.parseInt(request.getParameter("prodnr")));
+			System.out.println(cartItem);
+			cart.addItem(cartItem);
+		} catch (NullPointerException e) {
+			System.out.println("Hmm.. dette ser ikke ut som et gyldig produkt.");
+		}
+		request.getSession().setAttribute("cart", cart);
+		response.sendRedirect("products");
 		
 	}
 

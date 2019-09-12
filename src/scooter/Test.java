@@ -2,6 +2,7 @@ package scooter;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Test {
@@ -11,28 +12,28 @@ public class Test {
 		ProductEAO productEAO = new ProductEAO();
 		Cart cart = new Cart();
 		
-		Locale en_US = Locale.US;
-		Locale nb_NO = new Locale("nb");
-		Locale ge_GE = Locale.GERMAN;
+		System.out.println("Current Locale: " + Locale.getDefault());
+		ResourceBundle storeBundle = ResourceBundle.getBundle("store");
+		
 		
 		ArrayList<Product> products = productEAO.createAllProducts();
 
 		Scanner tast = new Scanner(System.in);
-		String help = "call: See alle varer \nadd:Skriv add, trykk enter, så følg opp med varenummeret og trykk enter."
-				+ "\ncart: Se carten din";
 
-		System.out.println("Velkommen til The Big Cup Store! Skriv 'help' for en liste over kommandoer:");
-		
-		String added ="";
-		String error ="";
-		String itemsincart = "";
+
+		System.out.println(storeBundle.getString("welcome_message"));
 		
 		
-		Locale currentLocale = nb_NO;
+		
+		Locale currentLocale = Locale.getDefault();
+		
 		
 		boolean finished = false;
 		while (!finished) {
-
+			
+			
+			System.out.println("\nNy input:");
+			
 			String input = tast.nextLine();
 
 			switch (input) {
@@ -63,11 +64,19 @@ public class Test {
 				}
 				break;
 			case "help":
-				System.out.println(help);
+				System.out.println(storeBundle.getString("help_message"));
 				break;
 			case "done":
 				finished = true;
 				System.out.println("Takk for besøket, velkommen igjen :-)");
+				break;
+			case "german":
+				Locale.setDefault(new Locale("de", "DE"));
+				storeBundle = ResourceBundle.getBundle("store");
+				break;
+			case "norsk":
+				Locale.setDefault(new Locale("nb", "NO"));
+				storeBundle = ResourceBundle.getBundle("store");
 				break;
 			default:
 				System.out.println("Denne kommandoen gjenkjente vi ikke. Prøv på ny. Skriv 'help' for listen igjen.");

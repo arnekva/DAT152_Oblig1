@@ -40,7 +40,6 @@ public class CartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String removeThis = request.getParameter("prodnr");
-		
 		Cart cart = (Cart) request.getSession().getAttribute("cart");
 
 		if(productEAO.findProduct(removeThis) != null) {

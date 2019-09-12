@@ -16,8 +16,7 @@ public class Test {
 		String help = "call: See alle varer \nadd:Skriv add, trykk enter, så følg opp med varenummeret og trykk enter."
 				+ "\ncart: Se carten din";
 		
-		System.out.println("Velkommen til The Big Cup Store! Her er en liste over kommandoer:");
-		System.out.println(help);
+		System.out.println("Velkommen til The Big Cup Store! Skriv 'help' for en liste over kommandoer:");
 		boolean finished = false;
 		while(!finished) {
 			
@@ -31,13 +30,23 @@ public class Test {
 		case "add":
 			try {
 			int nr = tast.nextInt();tast.nextLine();
-			Product nyprod = products
-			cart.addItem(item);
+			for(int j = 0; j<products.size();j++) {
+				if(products.get(j).getProdnr() == nr) {
+					cart.addItem(products.get(j));
+					System.out.println("Vare lagt til");
+				} else {
+					System.out.println("Fant ikke varen :(");
+				}
+			}
+			
 			} catch(Exception e) {
 				System.out.println("fuck you");
 			}
 		case "cart":
-			
+			System.out.println("Du har følgende varer i handlekurven: ");
+			for(int i = 0; i<cart.getItems().size(); i++) {
+				System.out.println(cart.getItems().get(i));
+			}
 		case "help":
 			System.out.println(help);
 		case "done":

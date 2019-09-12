@@ -20,8 +20,16 @@
 
 <body>
 <div class="locale"><a class="locale_link" href="#">Norsk</a>
-  <a class="locale_link" href="#">English (US)</a>
-  <a class="locale_link" href="#">EspaÃ±ol</a>
+ <span class="lang">
+        <form>
+            <select name="language" onchange="submit()">
+            <option value="" selected disabled hidden>Choose language</option>
+                <option value="en_US" ${language == 'en' ? 'selected' : ''}>EN</option>
+                <option value="de_DE" ${language == 'ru' ? 'selected' : ''}>DE</option>
+                <option value="nb_NO" ${language == 'nb' ? 'selected' : ''}>NB</option>
+            </select>
+        </form>
+    </span>
 </div>
 <nav><a href="index.html"><fmt:message key="link_home" /></a><a href="cart.html"><fmt:message key="link_cart" /></a></nav>
 <p><fmt:message key="welcome_message" /></p>

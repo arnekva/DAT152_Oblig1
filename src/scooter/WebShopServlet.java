@@ -41,6 +41,12 @@ public class WebShopServlet extends HttpServlet {
 		ArrayList<Product> products = productEAO.getProducts();
 		
 		request.getSession().setAttribute("products", products);
+		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
+			request.getSession().setAttribute("language", "nb_NO");
+		} else {
+			System.out.println("Already there");
+		}
+		
 
 		request.getRequestDispatcher("WEB-INF/products.jsp").forward(request, response);
 	}

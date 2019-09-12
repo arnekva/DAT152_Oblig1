@@ -30,7 +30,7 @@
         </form>
     </span>
 </div>
-<nav><a href="index.html"><fmt:message key="link_home" /></a><a href="cart.html"><fmt:message key="link_cart" /></a></nav>
+<nav><a href="index.html"><fmt:message key="link_home" /></a><a href="cart.jsp"><fmt:message key="link_cart" /></a><a href="products.jsp"><fmt:message key="link_products" /></a></nav>
 <p><fmt:message key="welcome_message" /></p>
 
 <div class="container">

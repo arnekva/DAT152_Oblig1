@@ -8,21 +8,21 @@ import java.util.List;
 public class Cart {
 	
 	
-	private List<CartItem> items = new ArrayList<>();
+	private List<Product> items = new ArrayList<>();
 	
-	public void addItem(CartItem item) {
+	public void addItem(Product item) {
 		items.add(item);
 	}
 
-	public void removeAllInstancesOfItem(CartItem item) {
+	public void removeAllInstancesOfItem(Product item) {
 
-		for (int i = 0; i < items.size(); i++) {
-			if (items.get(i).getName().equals(item.getName())) {
-				items.remove(i);
-			}
-		}
+//		for (int i = 0; i < items.size(); i++) {
+//			if (items.get(i).getName().equals(item.getName())) {
+//				items.remove(i);
+//			}
+//		}
 	}
-	public void removeSetItems(CartItem item, int x){
+	public void removeSetItems(Product item, int x){
 		
 	}
 
@@ -30,7 +30,7 @@ public class Cart {
 		items.clear();
 	}
 
-	public List<CartItem> getItems() {
+	public List<Product> getItems() {
 		return items;
 	}
 

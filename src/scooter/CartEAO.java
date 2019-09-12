@@ -6,11 +6,11 @@ import java.util.List;
 
 public class CartEAO {
 	
-	List<CartItem> items = null;
+	List<Product> CartItems = null;
 	
-	public List<CartItem> getAllCartItems() {
+	public List<Product> getAllCartItems() {
 
-		List<CartItem> items = null;
+		List<Product> items = null;
 		return items;
 	}
 	

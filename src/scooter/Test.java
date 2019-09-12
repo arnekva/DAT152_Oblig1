@@ -34,9 +34,7 @@ public class Test {
 				if(products.get(j).getProdnr() == nr) {
 					cart.addItem(products.get(j));
 					System.out.println("Vare lagt til");
-				} else {
-					System.out.println("Fant ikke varen :(");
-				}
+				} 
 			}
 			
 			} catch(Exception e) {
@@ -57,8 +55,9 @@ public class Test {
 			break;
 		default:
 			System.out.println("Denne kommandoen gjenkjente vi ikke. Prøv på ny. Skriv 'help' for listen igjen.");
+			break;
 		}
-		break;
+		
 		
 		
 		}

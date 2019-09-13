@@ -19,6 +19,8 @@
 </head>
 
 <body>
+<div id="page-container">
+<div id="content-wrap">
  <span class="lang">
         <form>
             <select name="language" onchange="submit()">
@@ -29,16 +31,14 @@
             </select>
         </form>
     </span>
+
+<nav><a class="fancy-link" href="home"><fmt:message key="link_home" /></a><a class="fancy-link" href="cart"><fmt:message key="link_cart" /></a><a class="fancy-link" href="products"><fmt:message key="link_products" /></a></nav>
+<h2><fmt:message key="welcome_message" /></h2>
+
+<img class="front-img" src="img/sco1.jpeg"/>
+<h4><fmt:message key="have_a_look" /><a href="cart"><fmt:message key="link_products" /></a></h4>
 </div>
-<nav><a href="index"><fmt:message key="link_home" /></a><a href="cart"><fmt:message key="link_cart" /></a><a href="products"><fmt:message key="link_products" /></a></nav>
-<p><fmt:message key="welcome_message" /></p>
-
-<div class="container">
-<div class="list-container">
-
-
-</div>
-
+<footer id="footer">footer Footer footer Footer footer Footer footer (c) 2019 Footer, inc. under exclusive licence from Fotsopp ltd., a FotFooterFoot company. All rights reserved. Regional restrictions may apply. </footer>
 </div>
 </body>
 </html>

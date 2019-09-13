@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/IndexServlet")
+@WebServlet("/home")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +27,12 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
+			request.getSession().setAttribute("language", "nb_NO");
+		} else {
+			System.out.println("Locale has been set by user");
+		}
+		request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
 	}
 
 	/**

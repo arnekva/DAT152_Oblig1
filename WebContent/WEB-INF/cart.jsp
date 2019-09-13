@@ -49,9 +49,12 @@
     <th><fmt:message key="product_price_txt" /></th>
     <td>${product.pris}</td>
   </tr>
-  <tr><td ><form method="post" id="form2">
-<input type="hidden" name="prodnr" value="${product.prodnr}">
-<button  onclick="submit()" ><fmt:message key="button_remove" /></button></form></td></tr>
+  <tr><td >
+  <form method="post">
+   <input type="hidden" name="prodnr" value="${product.prodnr}">
+   <button onclick="submit()" ><fmt:message key="button_remove" /></button>
+  </form>
+  </td></tr>
 </table>
     
 </c:forEach>

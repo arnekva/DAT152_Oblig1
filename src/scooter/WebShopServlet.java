@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 public class WebShopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProductEAO productEAO = new ProductEAO();
+	Cart cart;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,17 +40,16 @@ public class WebShopServlet extends HttpServlet {
 			sesjon = request.getSession(false);
 		}
 		
-		@SuppressWarnings("unused")
-		Cart cart = (Cart) request.getSession().getAttribute("cart");
-		
-		try {
-			System.out.println(cart.getItems().get(0));
-		} catch (Exception e) {
-			System.out.println("Hmm.. ser ikke ut som det er noe i handlevognen enda.");
+		if (request.getSession().getAttribute("cart") == null) {
+			cart = new Cart();
+		} else {
+			cart = (Cart) request.getSession().getAttribute("cart");
 		}
+		
 		ArrayList<Product> products = productEAO.getProducts();
 		
 		request.getSession().setAttribute("products", products);
+		request.getSession().setAttribute("cart", cart);
 		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
 			request.getSession().setAttribute("language", "nb_NO");
 		} else {
@@ -65,7 +65,7 @@ public class WebShopServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Cart cart = new Cart();
+		cart = (Cart) request.getSession().getAttribute("cart");
 		Product cartItem;
 		try {
 			cartItem = productEAO.getProduct(Integer.parseInt(request.getParameter("prodnr")));

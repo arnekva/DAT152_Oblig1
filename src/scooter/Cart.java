@@ -19,7 +19,13 @@ public class Cart {
 		CartItems.add(product);
 	}
 	public void removeItem(Product product) {
-		CartItems.remove(product);
+		for (int i = 0; i < CartItems.size(); i++) {
+			if (CartItems.get(i).getProdnr() == product.getProdnr()) {
+				CartItems.remove(i);
+				i--;
+			}
+		}
+		
 	}
 	public void printAllItems() {
 		for (Product p : CartItems) {

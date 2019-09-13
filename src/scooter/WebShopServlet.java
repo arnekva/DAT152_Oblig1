@@ -40,6 +40,7 @@ public class WebShopServlet extends HttpServlet {
 			sesjon = request.getSession(false);
 		}
 		
+		
 		if (request.getSession().getAttribute("cart") == null) {
 			cart = new Cart();
 		} else {
@@ -50,6 +51,7 @@ public class WebShopServlet extends HttpServlet {
 		
 		request.getSession().setAttribute("products", products);
 		request.getSession().setAttribute("cart", cart);
+		
 		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
 			request.getSession().setAttribute("language", "nb_NO");
 		} else {
@@ -67,7 +69,9 @@ public class WebShopServlet extends HttpServlet {
 		
 		cart = (Cart) request.getSession().getAttribute("cart");
 		Product cartItem;
+		
 		try {
+			
 			cartItem = productEAO.getProduct(Integer.parseInt(request.getParameter("prodnr")));
 			System.out.println(cartItem);
 			cart.addItem(cartItem);

@@ -48,7 +48,7 @@
   </tr>
    <tr>
     <th><fmt:message key="product_nr_txt" /></th>
-    <td><p class="product-description">${product.description}<p></td>
+    <td><p class="product-description"><p></td>
   </tr>
   <tr>
     <th><fmt:message key="product_name_txt" /></th>

@@ -32,7 +32,7 @@
     </span>
 <nav><a class="fancy-link" href="home"><fmt:message key="link_home" /></a><a class="fancy-link" href="cart"><fmt:message key="link_cart" /></a><a class="fancy-link" href="products"><fmt:message key="link_products" /></a></nav>
 <h2><fmt:message key="welcome_message" /></h2>
-<div class="container"> <img class="front-img" src="img/sco1.jpeg"/>
+<div class="container"> 
 <div class="list-container">
 <c:forEach var="product" items="${products}"  varStatus="loop">
 <div class="test-container">

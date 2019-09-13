@@ -27,6 +27,7 @@ th{
 .prod-img{
   min-height:50px;
   margin-right:100px;
+  margin-top:20px;
 }
 .prod{
   margin-left:100px;
@@ -56,10 +57,9 @@ footer {
 	margin-bottom:35px;
 }
 .front-img{
-	height:100px;
-	width:auto;
+	height:auto;
+	width:150px;
 	margin-top:10px;
-	margin-bottom:25px;
 	
 }
 #page-container {

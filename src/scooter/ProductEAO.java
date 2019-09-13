@@ -10,12 +10,12 @@ public class ProductEAO {
 	
 	
 	public ProductEAO() {
-		Product kopp1 = new Product(1, "HaraldCup", 9, "img/kopp1.png");
-		Product kopp2 = new Product(2, "The Golden Mug", 29, "img/kopp2.png");
-		Product kopp3 = new Product(3, "Goblet of Fire", 199, "img/kopp3.png");
-		Product kopp4 = new Product(4, "The 99 Coffee cup", 12, "img/kopp4.png");
-		Product kopp5 = new Product(5, "Are's Favorite", 0.99, "img/kopp5.png");
-		Product kopp6 = new Product(6, "Big D Cup", 499, "img/kopp6.png");
+		Product kopp1 = new Product(1, "Municipal Cup", 9, "img/municipal_cup.jpg");
+		Product kopp2 = new Product(2, "The Golden Mug", 29, "img/golden_mug.jpg");
+		Product kopp3 = new Product(3, "Goblet of Fire", 199, "img/goblet_of_fire.jpg");
+		Product kopp4 = new Product(4, "The 99 Coffee cup", 12, "img/99_cup.jpg");
+		Product kopp5 = new Product(5, "Are's Favorite", 0.99, "img/are_favorite.jpg");
+		Product kopp6 = new Product(6, "Big D Cup", 499, "img/big_D_cup.jpg");
 		
 		products.add(kopp1);
 		products.add(kopp2);

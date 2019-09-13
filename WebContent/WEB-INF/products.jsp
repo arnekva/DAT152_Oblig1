@@ -52,7 +52,7 @@
   </tr>
   <tr>
     <th><fmt:message key="product_price_txt" /></th>
-    <td>${product.pris}</td>
+    <td><fmt:formatNumber type="currency" value="${product.pris}" /></td>
   </tr>
   <tr><td >
   <form method="post">

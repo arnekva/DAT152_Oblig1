@@ -48,9 +48,7 @@ public class WebShopServlet extends HttpServlet {
 			cart = (Cart) request.getSession().getAttribute("cart");
 		}
 
-		ArrayList<Product> products = productEAO.getProducts();
 
-		request.getSession().setAttribute("products", products);
 		request.getSession().setAttribute("cart", cart);
 
 		if (request.getSession().getAttribute("language") == null
@@ -62,10 +60,13 @@ public class WebShopServlet extends HttpServlet {
 
 		String locale = (String) request.getSession().getAttribute("language");
 		String langCode = "";
+		double currencyMultiplier = 1;
 		if (locale.equals("nb_NO")) {
 			langCode = "NB";
+			currencyMultiplier = 9.936;
 		} else if (locale.equals("en_US")) {
 			langCode = "EN";
+			currencyMultiplier = 1.108;
 		} else {
 			langCode = "DE";
 		}
@@ -80,7 +81,12 @@ public class WebShopServlet extends HttpServlet {
 			}
 		}
 		Collections.sort(descriptions);
-
+		productEAO = new ProductEAO();
+		ArrayList<Product> rightPriceTiles = productEAO.getProducts();
+		for (Product p : rightPriceTiles) {
+			p.setPris(p.getPris()*currencyMultiplier);
+		}
+		request.getSession().setAttribute("products", rightPriceTiles);
 		request.getSession().setAttribute("descriptions", descriptions);
 
 		request.getRequestDispatcher("WEB-INF/products.jsp").forward(request, response);

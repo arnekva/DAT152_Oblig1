@@ -32,9 +32,11 @@
     </span>
 <nav><a class="fancy-link" href="home"><fmt:message key="link_home" /></a><a class="fancy-link" href="cart"><fmt:message key="link_cart" /></a><a class="fancy-link" href="products"><fmt:message key="link_products" /></a></nav>
 <h2><fmt:message key="welcome_message" /></h2>
-<div class="container">
+<div class="container"> <img class="front-img" src="img/sco1.jpeg"/>
 <div class="list-container">
 <c:forEach var="product" items="${products}"  varStatus="loop">
+<div class="test-container">
+<img class="front-img" style="float:left;"src="${product.bilde}"/>
 <table class="prod">
   <tr>
     <th><fmt:message key="product_nr_txt" /></th>
@@ -55,6 +57,7 @@
   </form>
   </td></tr>
 </table>
+</div>
 </c:forEach>
 </div>
 </div>

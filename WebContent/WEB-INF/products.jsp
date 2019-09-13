@@ -43,6 +43,10 @@
     <td>${product.prodnr}</td>
   </tr>
   <tr>
+    <th><fmt:message key="product_description_txt" /></th>
+    <td>${descriptions[loop.index].txt}</td>
+  </tr>
+  <tr>
     <th><fmt:message key="product_name_txt" /></th>
     <td>${product.navn}</td>
   </tr>

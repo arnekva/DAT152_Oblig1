@@ -16,7 +16,7 @@ public class DescriptionEAO {
 		Description desc4 = new Description(4, "NB", "99 kaffekoppen - Som barn lekte du gjerne politi og røver. Som voksen kan du nå ta leken til et helt nytt nivå men denne kaffekoppen. Len deg tilbake i kontorstolen og ta deg en ordentlig kopp kaffe i denne politikoppen!");
 		Description desc5 = new Description(5, "NB", "Ares favoritt - En kopp så billig at selv Are drar sparegrisen ut av safen. OBS:koppen inkluderer et sosialt stempel som kan medføre en unntaksgjeninnføring av kaste-systemet i ditt lavmålte tilfelle.");
 		Description desc6 = new Description(6, "NB", "Den store D-koppen - Et kjøp av denne koppen bør ikke påvirkes av en beskrivelse. Du som kjøper denne vet hvem du er.");
-		Description desc7 = new Description(1, "EN", "MunicipalCup - Our most popular item. This cup ensures that you'll always have a place to put your liquid.");
+		Description desc7 = new Description(1, "EN", "Municipal Cup - Our most popular item. This cup ensures that you'll always have a place to put your liquid.");
 		Description desc8 = new Description(2, "EN", "The Golden Mug - Does pretty much the same as the HaraldCup, but it sports a fresh golden color.");
 		Description desc9 = new Description(3, "EN", "Goblet of Fire - You might think this is obtained straight from Harry Potter, but that would not be a wise bet.. The cup that is literally on fire! WARNING:fire hazard.");
 		Description desc10 = new Description(4, "EN", "The 99 Coffee cup - As a child, you probably loved playing cops and robbers. As an adult you can now take the game to the next level with this coffee cup. Lean back in your office chair and have a proper cup of coffee in this police cup!");
@@ -49,5 +49,10 @@ public class DescriptionEAO {
 		descriptions.add(desc18);
 		
 		
+	}
+
+
+	public ArrayList<Description> getDescriptions() {
+		return descriptions;
 	}
 }

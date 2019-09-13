@@ -3,6 +3,7 @@ package scooter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,6 +57,26 @@ public class WebShopServlet extends HttpServlet {
 			System.out.println("Locale has been set by user");
 		}
 		
+		String locale = (String) request.getSession().getAttribute("language");
+		String langCode = "";
+		if (locale.equals("nb_NO")) {
+			langCode = "NB";
+		} else if (locale.equals("en_US")) {
+			langCode = "EN";
+		} else {
+			langCode = "DE";
+		}
+		
+		DescriptionEAO descriptionEAO = new DescriptionEAO();
+		ArrayList<Description> descriptions = new ArrayList<Description>();
+		for (Description d : descriptionEAO.getDescriptions()) {
+			if (d.getLangCode().equals(langCode)) {
+				descriptions.add(d);
+			}
+		}
+		Collections.sort(descriptions);
+		
+		request.getSession().setAttribute("descriptions", descriptions);
 
 		request.getRequestDispatcher("WEB-INF/products.jsp").forward(request, response);
 	}

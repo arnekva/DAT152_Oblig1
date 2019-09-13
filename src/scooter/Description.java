@@ -1,6 +1,6 @@
 package scooter;
 
-public class Description {
+public class Description implements Comparable<Object> {
 	
 	private int prodnr;
 	private String langCode;
@@ -35,6 +35,19 @@ public class Description {
 	public void setTxt(String txt) {
 		this.txt = txt;
 	}
+
+	@Override
+	public int compareTo(Object o) {
+		Description comparingTo = (Description) o;
+		int numberForCompare = comparingTo.getProdnr();
+		return this.prodnr-numberForCompare;
+	}
+
+	@Override
+	public String toString() {
+		return "Description [prodnr=" + prodnr + ", langCode=" + langCode + ", txt=" + txt + "]";
+	}
+	
 	
 	
 }

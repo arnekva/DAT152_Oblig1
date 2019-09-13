@@ -19,7 +19,12 @@
 </head>
 
 <body>
- <span class="lang">
+
+
+<body>
+<div id="page-container">
+<div id="content-wrap">
+<span class="lang">
         <form>
             <select name="language" onchange="submit()">
             <option value="" selected disabled hidden>Choose language</option>
@@ -29,13 +34,13 @@
             </select>
         </form>
     </span>
-</div>
-<nav><a href="index.jsp"><fmt:message key="link_home" /></a><a href="cart"><fmt:message key="link_cart" /></a><a href="products"><fmt:message key="link_products" /></a></nav>
-<p><fmt:message key="welcome_message" /></p>
+<nav><a class="fancy-link" href="home"><fmt:message key="link_home" /></a><a class="fancy-link" href="cart"><fmt:message key="link_cart" /></a><a class="fancy-link" href="products"><fmt:message key="link_products" /></a></nav>
+<h2><fmt:message key="welcome_message" /></h2>
 
 <div class="container">
 <div class="list-container">
 <c:forEach var="product" items="${cart.items}"  varStatus="loop">
+<p></p>
 <table class="prod">
   <tr>
     <th><fmt:message key="product_nr_txt" /></th>
@@ -58,9 +63,10 @@
 </table>
     
 </c:forEach>
-
 </div>
-
+</div>
+</div>
+<footer id="footer">footer Footer footer Footer footer Footer footer (c) 2019 Footer, inc. under exclusive licence from Fotsopp ltd., a FotFooterFoot company. All rights reserved. Regional restrictions may apply. </footer>
 </div>
 </body>
 </html>

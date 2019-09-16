@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,26 +28,31 @@ public class CartServlet extends HttpServlet {
 //			response.sendRedirect("webshop");
 //		}
 
-		if (request.getSession().getAttribute("language") == null
-				|| request.getSession().getAttribute("language") == "") {
-			request.getSession().setAttribute("language", "nb_NO");
+		String localeString = "";
+		//kjør en liten sjekk på cookie her
+		if (request.getCookies() != null) {
+			Cookie[] cookies = request.getCookies();
+			Cookie langCookie = cookies[0];
+			localeString = langCookie.getValue();
 		} else {
-			System.out.println("Locale has been set by user");
+			String acceptLanguage = request.getHeader("Accept-Language");
+			localeString = acceptLanguage.substring(0, 2) + "_" + acceptLanguage.substring(3, 5).toUpperCase();
 		}
+		
+		request.getSession().setAttribute("language", localeString);
 
-		String locale = (String) request.getSession().getAttribute("language");
 		String langCode = "";
 		double currencyMultiplier = 1;
-		if (locale.equals("nb_NO")) {
+		if (localeString.equals("nb_NO")) {
 			langCode = "NB";
 			currencyMultiplier = 9.936;
-		} else if (locale.equals("en_US")) {
+		} else if (localeString.equals("en_US")) {
 			langCode = "EN";
 			currencyMultiplier = 1.108;
 		} else {
 			langCode = "DE";
 		}
-		System.out.println(locale);
+		System.out.println(localeString);
 		System.out.println(langCode);
 
 		DescriptionEAO descriptionEAO = new DescriptionEAO();
@@ -97,10 +103,10 @@ public class CartServlet extends HttpServlet {
 
 		Cart cart = (Cart) request.getSession().getAttribute("cart");
 
-		if (request.getParameter("language") != null) {
-			String locale = (String) request.getParameter("language");
-			request.getSession().setAttribute("language", locale);
-		}
+//		if (request.getParameter("language") != null) {
+//			String locale = (String) request.getParameter("language");
+//			request.getSession().setAttribute("language", locale);
+//		}
 		if (request.getParameter("prodnr") != null) {
 			removeThis = request.getParameter("prodnr");
 			if (productEAO.findProduct(removeThis) != null) {

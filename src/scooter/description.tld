@@ -18,8 +18,7 @@
       <tag-class>scooter.CopyrightTag</tag-class>
       <body-content>empty</body-content>
       <attribute>
-         <name>Since</name>
-         <type>int</type>
+         <name>since</name>
       </attribute>
    </tag>
    

@@ -19,7 +19,7 @@
       <body-content>empty</body-content>
       <attribute>
          <name>since</name>
-         <type>int</type>
+
       </attribute>
    </tag>
    

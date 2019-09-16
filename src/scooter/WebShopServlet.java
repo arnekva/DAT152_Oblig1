@@ -57,11 +57,7 @@ public class WebShopServlet extends HttpServlet {
 		//kjør en liten sjekk på cookie her
 		Cookie[] cookies = request.getCookies();
 		if(request.getCookies() != null) {
-			System.out.println("\n***PRINTING ALL COOKIES: ");
-			for(Cookie cookie : cookies) {
-				System.out.println(cookie.getName() + " " + cookie.getValue());
-			}
-			System.out.println("\n***END OF COOKIE PRINT\n");
+
 		for(Cookie cookie : cookies) {
 			if(cookie.getName().equals("locale")) {
 				localeString = cookie.getValue();

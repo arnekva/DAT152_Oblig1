@@ -39,7 +39,10 @@ public class CopyrightTag extends SimpleTagSupport {
 	public void setSince(String since) {
 	      this.since = since;
 	   }
-   public void doTag() throws JspException, IOException {
+   /* Prints the custom copyright tag in the JSP
+ * @see javax.servlet.jsp.tagext.SimpleTagSupport#doTag()
+ */
+public void doTag() throws JspException, IOException {
 	   
 	   JspWriter out = getJspContext().getOut();
 	   if(since == null) {
@@ -55,7 +58,12 @@ public class CopyrightTag extends SimpleTagSupport {
       
       
    }
-   public final static String toRoman(int number) {
+   /**
+    * Takes an integer and converts to to roman numerals
+ * @param number
+ * @return
+ */
+public final static String toRoman(int number) {
        int l =  map.floorKey(number);
        if ( number == l ) {
            return map.get(number);

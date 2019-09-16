@@ -32,11 +32,6 @@ public class CartServlet extends HttpServlet {
 
 		Cookie[] cookies = request.getCookies();
 		if (request.getCookies() != null) {
-			System.out.println("\n***PRINTING ALL COOKIES: ");
-			for (Cookie cookie : cookies) {
-				System.out.println(cookie.getName() + " " + cookie.getValue());
-			}
-			System.out.println("\n***END OF COOKIE PRINT\n");
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("locale")) {
 					localeString = cookie.getValue();
@@ -111,7 +106,6 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String removeThis = "";
 
 		Cart cart = (Cart) request.getSession().getAttribute("cart");

@@ -35,6 +35,9 @@ public class Cart {
 		
 		
 	}
+	/**
+	 * Prints all objects in the cart
+	 */
 	public void printAllItems() {
 		for (Product p : CartItems) {
 			System.out.println(p);

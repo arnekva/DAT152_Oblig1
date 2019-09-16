@@ -32,6 +32,11 @@ public class ProductEAO {
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
 	}
+	/**
+	 * Finds and returns the product with the given product number if it exists.
+	 * @param nr
+	 * @return Product or null
+	 */
 	public Product findProduct(String nr) {
 		for(int i = 0; i<products.size();i++) {
 			try {

@@ -57,6 +57,11 @@ public class DescriptionEAO {
 		return descriptions;
 	}
 	
+	/**
+	 * Get descriptions
+	 * @param langCode
+	 * @return returns the correct descriptions based on locale
+	 */
 	public ArrayList<Description> getDescriptionsByLangCode(String langCode) {
 		ArrayList<Description> languageDescriptions = new ArrayList<Description>();
 		for (Description d : descriptions) {

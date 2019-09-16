@@ -32,7 +32,7 @@
         </form>
     </span>
 <nav><a class="fancy-link" href="home"><fmt:message key="link_home" /></a><a class="fancy-link" href="cart"><fmt:message key="link_cart" /></a><a class="fancy-link" href="products"><fmt:message key="link_products" /></a></nav>
-<h2><fmt:message key="welcome_message" /></h2>
+<h2><fmt:message key="welcome_message_product" /></h2>
 <div class="container"> 
 <div class="list-container">
 <c:forEach var="product" items="${products}"  varStatus="loop">

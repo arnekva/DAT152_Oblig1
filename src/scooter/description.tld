@@ -12,6 +12,9 @@
       <name>Description</name>
       <tag-class>scooter.DescriptionTag</tag-class>
       <body-content>empty</body-content>
+            <attribute>
+         <name>maxChars</name>
+      </attribute>
    </tag>
    <tag>
       <name>Copyright</name>

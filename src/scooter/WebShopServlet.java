@@ -3,6 +3,7 @@ package scooter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,14 +55,26 @@ public class WebShopServlet extends HttpServlet {
 
 		String localeString = "";
 		//kjør en liten sjekk på cookie her
-		if (request.getCookies() != null) {
-			Cookie[] cookies = request.getCookies();
-			Cookie langCookie = cookies[0];
-			localeString = langCookie.getValue();
-		} else {
-			String acceptLanguage = request.getHeader("Accept-Language");
-			localeString = acceptLanguage.substring(0, 2) + "_" + acceptLanguage.substring(3, 5).toUpperCase();
+		Cookie[] cookies = request.getCookies();
+		if(request.getCookies() != null) {
+			System.out.println("\n***PRINTING ALL COOKIES: ");
+			for(Cookie cookie : cookies) {
+				System.out.println(cookie.getName() + " " + cookie.getValue());
+			}
+			System.out.println("\n***END OF COOKIE PRINT\n");
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("locale")) {
+				localeString = cookie.getValue();
+				System.out.println("The locale " + localeString + " has been found in the cookie, and is valid.");
+			}
 		}
+		}
+		if(localeString.equals("")) {
+			Locale locale = request.getLocale();
+			System.out.println("No valid cookie found, using Accept-Language from request header: " + locale.toString());
+			localeString = locale.toString();
+		}
+		
 		
 		request.getSession().setAttribute("language", localeString);
 
@@ -69,12 +82,15 @@ public class WebShopServlet extends HttpServlet {
 		String langCode = "";
 		double currencyMultiplier = 1;
 		if (localeString.equals("nb_NO")) {
+			System.out.println("Norwegian locale being used");
 			langCode = "NB";
 			currencyMultiplier = 9.936;
 		} else if (localeString.equals("en_US")) {
+			System.out.println("English locale being used");
 			langCode = "EN";
 			currencyMultiplier = 1.108;
 		} else {
+			System.out.println("German locale being used");
 			langCode = "DE";
 		}
 		
@@ -105,6 +121,32 @@ public class WebShopServlet extends HttpServlet {
 //			String locale = (String) request.getParameter("language");
 //			request.getSession().setAttribute("language", locale);
 //		}
+		String newLanguage = request.getParameter("language");
+		if (newLanguage != null) {
+			if (request.getCookies() != null) {
+				System.out.println("POST Request for language update. Locale selected was: " + newLanguage + ".");
+
+				Cookie[] cookies = request.getCookies();
+				boolean found = false;
+				for (Cookie cookie : cookies) {
+					if (cookie.getName().equals("locale")) {
+						found = true;
+						cookie.setValue(newLanguage);
+						response.addCookie(cookie);
+						System.out.println(cookie.getValue());
+
+						System.out.println("Valid value in cookie was found. Updating locale");
+					}
+				}
+				if (!found) {
+					System.out.println("No valid cookie was found. Generating new cookie.");
+					Cookie newLang = new Cookie("locale", newLanguage);
+					System.out.println("Cookie created with name 'Locale' and value " + newLanguage);
+					response.addCookie(newLang);
+				}
+
+			}
+		}
 		if (request.getParameter("prodnr") != null) {
 			try {
 
@@ -119,5 +161,5 @@ public class WebShopServlet extends HttpServlet {
 		response.sendRedirect("products");
 
 	}
-
+	
 }

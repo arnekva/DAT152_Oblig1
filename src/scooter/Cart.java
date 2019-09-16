@@ -18,6 +18,10 @@ public class Cart {
 	public void addItem(Product product) {
 		CartItems.add(product);
 	}
+	/**
+	 * Removes an object from the cart
+	 * @param product
+	 */
 	public void removeItem(Product product) {
 		for (int i = 0; i < CartItems.size(); i++) {
 			if (CartItems.get(i).getProdnr() == product.getProdnr()) {
@@ -25,6 +29,7 @@ public class Cart {
 				i--;
 			}
 		}
+		
 		
 	}
 	public void printAllItems() {

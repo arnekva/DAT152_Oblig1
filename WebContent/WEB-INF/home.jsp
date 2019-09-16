@@ -22,7 +22,7 @@
 <div id="page-container">
 <div id="content-wrap">
  <span class="lang">
-        <form>
+        <form method="post">
             <select name="language" onchange="submit()">
             <option value="" selected disabled hidden>Choose language</option>
                 <option value="en_US" ${language == 'en' ? 'selected' : ''}>English (US)</option>

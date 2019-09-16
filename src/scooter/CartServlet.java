@@ -20,19 +20,20 @@ public class CartServlet extends HttpServlet {
 	ProductEAO productEAO = new ProductEAO();
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession sesjon = null;
 //		if (request.getSession() == null) {
 //			response.sendRedirect("webshop");
 //		}
-		
-		
-		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
+
+		if (request.getSession().getAttribute("language") == null
+				|| request.getSession().getAttribute("language") == "") {
 			request.getSession().setAttribute("language", "nb_NO");
 		} else {
 			System.out.println("Locale has been set by user");
 		}
-		
+
 		String locale = (String) request.getSession().getAttribute("language");
 		String langCode = "";
 		double currencyMultiplier = 1;
@@ -50,48 +51,70 @@ public class CartServlet extends HttpServlet {
 
 		DescriptionEAO descriptionEAO = new DescriptionEAO();
 		ArrayList<Description> allDescriptions = descriptionEAO.getDescriptions();
-		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		Cart cart;
+		if (request.getSession().getAttribute("cart") == null) {
+			cart = new Cart();
+		} else {
+			cart = (Cart) request.getSession().getAttribute("cart");
+		}
 		ArrayList<Product> cartItems = cart.getItems();
 		ArrayList<Description> descriptions = new ArrayList<Description>();
 		for (Product p : cartItems) {
 			for (int i = 0; i < allDescriptions.size(); i++) {
-				if (p.getProdnr() == allDescriptions.get(i).getProdnr() && allDescriptions.get(i).getLangCode().equals(langCode)) {
+				if (p.getProdnr() == allDescriptions.get(i).getProdnr()
+						&& allDescriptions.get(i).getLangCode().equals(langCode)) {
 					descriptions.add(allDescriptions.get(i));
 					i = allDescriptions.size();
 				}
 			}
-			
+
 		}
+
 		productEAO = new ProductEAO();
-		ArrayList<Product> productList = productEAO.getProducts();
 		ArrayList<Product> rightPriceTiles = cartItems;
+		// setter prisene i handlevognen tilbake til euro for så å konvertere mellom
+		// valutaene
 		for (Product p : rightPriceTiles) {
-			p.setPris(p.getPris()*currencyMultiplier);
+			Product defaultPrice = productEAO.getProduct(p.getProdnr());
+			p.setPris(defaultPrice.getPris());
+			p.setPris(p.getPris() * currencyMultiplier);
 		}
-		request.getSession().setAttribute("products", rightPriceTiles);
+		cart.setItems(rightPriceTiles);
+		request.getSession().setAttribute("cart", cart);
 		request.getSession().setAttribute("descriptions", descriptions);
-		
+
 		request.getRequestDispatcher("WEB-INF/cart.jsp").forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String removeThis = request.getParameter("prodnr");
+		String removeThis = "";
+
 		Cart cart = (Cart) request.getSession().getAttribute("cart");
 
-		if(productEAO.findProduct(removeThis) != null) {
-			System.out.println("whaaat");
-		cart.removeItem(productEAO.findProduct(removeThis));
-		
-		request.getSession().setAttribute("cart", cart);
-		} else {
-			response.sendRedirect("cart");
+		if (request.getParameter("language") != null) {
+			String locale = (String) request.getParameter("language");
+			request.getSession().setAttribute("language", locale);
 		}
-		response.sendRedirect("cart");
+		if (request.getParameter("prodnr") != null) {
+			removeThis = request.getParameter("prodnr");
+			if (productEAO.findProduct(removeThis) != null) {
+				System.out.println("whaaat");
+				cart.removeItem(productEAO.findProduct(removeThis));
+
+				request.getSession().setAttribute("cart", cart);
+			} else {
+				response.sendRedirect("cart");
+			}
+		}
 		
+		response.sendRedirect("cart");
+
 	}
 
 }

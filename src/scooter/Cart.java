@@ -15,6 +15,9 @@ public class Cart {
 	public ArrayList<Product> getItems() {
 		return CartItems;
 	}
+	public void setItems(ArrayList<Product> items) {
+		CartItems = items;
+	}
 	public void addItem(Product product) {
 		CartItems.add(product);
 	}

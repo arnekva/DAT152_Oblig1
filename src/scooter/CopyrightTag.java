@@ -1,7 +1,8 @@
 package scooter;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.StringWriter;
+import java.util.Calendar;
 import java.util.TreeMap;
 
 import javax.servlet.jsp.JspException;
@@ -12,6 +13,7 @@ public class CopyrightTag extends SimpleTagSupport {
 	
 	
 	private String since;
+	private StringWriter sw = new StringWriter();
 	private final static TreeMap<Integer, String> map = new TreeMap<Integer, String>();
 	static {
 
@@ -39,12 +41,15 @@ public class CopyrightTag extends SimpleTagSupport {
 	   }
    public void doTag() throws JspException, IOException {
 	   
+	   JspWriter out = getJspContext().getOut();
 	   if(since == null) {
-		   JspWriter out = getJspContext().getOut();
-		      out.println("Ingen since satt??");
+		   out.println("Ingen since satt??");
 	   } else {
-		   JspWriter out = getJspContext().getOut();
-		      out.println("Det er noe i since");
+		   getJspBody().invoke(sw);
+		   int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+		   int sinceYear = Integer.parseInt(since);
+		   String toPrint = "© " + toRoman(sinceYear) + "-" + toRoman(currentYear) + " " + sw.toString();
+		   out.println(toPrint);
 	   }
        
       

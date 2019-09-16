@@ -11,15 +11,19 @@
    <tag>
       <name>Description</name>
       <tag-class>scooter.DescriptionTag</tag-class>
-      <body-content>empty</body-content>
+      <body-content>scriptless</body-content>
+      <attribute>
+         <name>maxChars</name>
+		 
+      </attribute>
    </tag>
    <tag>
       <name>Copyright</name>
       <tag-class>scooter.CopyrightTag</tag-class>
-      <body-content>empty</body-content>
+      <body-content>scriptless</body-content>
       <attribute>
          <name>since</name>
-
+		
       </attribute>
    </tag>
    

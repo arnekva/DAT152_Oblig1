@@ -27,6 +27,14 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//kjør en liten sjekk på cookie her
+		
+		//else gjør dette
+		String acceptLanguage = request.getHeader("Accept-Language");
+		String localeString = acceptLanguage.substring(0, 2) + "_" + acceptLanguage.substring(3, 5).toUpperCase();
+		
+		
 		if(request.getSession().getAttribute("language") == null || request.getSession().getAttribute("language") == "") {
 			request.getSession().setAttribute("language", "nb_NO");
 		} else {

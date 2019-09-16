@@ -40,7 +40,6 @@
 
 <div class="container">
 <div class="list-container">
-<ex:Description />
 <c:forEach var="product" items="${cart.items}"  varStatus="loop">
 <p></p>
 <table class="prod">
@@ -50,7 +49,7 @@
   </tr>
    <tr>
     <th><fmt:message key="product_description_txt" /></th>
-    <td>${descriptions[loop.index].txt}</td>
+    <td><ex:Description maxChars="20">${descriptions[loop.index].txt}</ex:Description></td>
   </tr>
   <tr>
     <th><fmt:message key="product_name_txt" /></th>
@@ -72,7 +71,7 @@
 </div>
 </div>
 </div>
-<footer id="footer">footer Footer footer Footer footer Footer footer (c) 2019 Footer, inc. under exclusive licence from Fotsopp ltd., a FotFooterFoot company. All rights reserved. Regional restrictions may apply. </footer>
+<footer id="footer"><ex:Copyright since="2008">HVL</ex:Copyright></footer>
 </div>
 </body>
 </html>

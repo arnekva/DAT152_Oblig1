@@ -67,7 +67,7 @@
 </div>
 </div>
 </div>
-<footer id="footer"><ex:Copyright since="2008"></ex:Copyright></footer>
+<footer id="footer"><ex:Copyright since="2008">HVL</ex:Copyright></footer>
 </div>
 </body>
 </html>

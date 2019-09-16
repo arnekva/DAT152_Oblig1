@@ -74,13 +74,7 @@ public class WebShopServlet extends HttpServlet {
 		System.out.println(langCode);
 
 		DescriptionEAO descriptionEAO = new DescriptionEAO();
-		ArrayList<Description> descriptions = new ArrayList<Description>();
-		for (Description d : descriptionEAO.getDescriptions()) {
-			if (d.getLangCode().equals(langCode)) {
-				descriptions.add(d);
-			}
-		}
-		Collections.sort(descriptions);
+		ArrayList<Description> descriptions = descriptionEAO.getDescriptionsByLangCode(langCode);
 		productEAO = new ProductEAO();
 		ArrayList<Product> rightPriceTiles = productEAO.getProducts();
 		for (Product p : rightPriceTiles) {
